@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <style>
+        body {
+            padding-left: 150px;
+        }
+    </style>
+</head>
+<body>
+    <p style="padding-left: 1200px; padding-top: 25px;"><a href="/success">Back</a> | <a href="/logout">Logout</a></p>
+    <h1><b>{{anItem.item}}</b></h1>
+    <br>
+    <p><b>Planned By:</b> {{aUser}} {{lname}}</p>
+    <p><b>Description:</b> {{anItem.plan}}</p>
+    <p><b>Travel Date From:</b> {{anItem.start_date}}</p>
+    <p><b>Travel Date To:</b> {{anItem.release_date}}</p>
+    <br>
+    <hr>
+    <br>
+    <h3>Other Users Joining the Trip:</h3>
+    <!-- {% if anItem.wishlist.all %} -->
+    {% for userObj in anItem.wishlist.all %}
+    <!-- User.objects.exclude(added_by="loggedInUser.first_name") -->
+    <p>{{userObj.first_name}} {{userObj.last_name}}</p>
+    {% endfor %}
+    <!-- {% endif %} -->
+</body>
+</html>
+
+

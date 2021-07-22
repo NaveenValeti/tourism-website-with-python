@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+
+        .table {
+            padding-left: 200px;
+            padding-right: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <p style="padding-left: 1200px; padding-top: 25px;"><a href="/success">Home</a> | <a href="/logout">Logout</a></p>
+    <h1 style="padding-left: 100px; padding-top: 25px;">Welcome {{loggedInUser.first_name}}!</h1>
+    <br><br>
+    <div class="table">
+    <!-- <table>
+        <tr>
+            <th>Item</th>
+            <th>Added By</th>
+            <th>Date Added</th>
+            <th>Release Date</th>
+            <th>Action</th>
+        </tr>
+        {% for item in allItems %}
+        <tr>
+            <td><a href="/item/{{item.id}}">{{item.item}}</a></td>
+            <td>{{item.added_by.first_name}} {{item.added_by.last_name}}</td>
+            <td>{{item.created_at}}</td>
+            <td>{{item.release_date}}</td>
+            <td><a href="/remove/{{item.id}}">Remove from Wishlist</a> | <a href="/addFav/{{item.id}}">Add to Wishlist</a></td>
+        </tr>
+        {% endfor %}
+    </table> -->
+    <br><br>
+    <h4>Your Trip Schedules:</h4>
+    <table>
+        <tr>
+            <th>Description</th>
+            <th>Travel Start Date</th>
+            <th>Travel End Date</th>
+            <th>Plan</th>
+            <th>Action</th>
+        </tr>
+        {% for item in favItems %}
+        <tr>
+            <td><a href="/item/{{item.id}}">{{item.item}}</a></td>
+            <td>{{item.start_date}}</td>
+            <td>{{item.release_date}}</td>
+            <td>{{item.plan}}</td>
+            <!-- <td>{{item.added_by.first_name}} {{item.added_by.last_name}}</td> -->
+            <td><a href="/remove/{{item.id}}">Cancel</a> |
+                <!-- % if user in query.created_by: % -->
+                <a href="/delete/{{item.id}}">Delete</a></td>
+                <!-- % endif % -->
+        </tr>
+        {% endfor %}
+    </table>
+    <br><br>
+    <h4>Other User's Travel Plans:</h4>
+    <table>
+        <tr>
+            <th>Description</th>
+            <th>Travel Start Date</th>
+            <th>Travel End Date</th>
+            <th>Do You Want to Join?</th>
+        </tr>
+        {% for item in nonFav %}
+        <tr>
+            <td><a href="/item/{{item.id}}">{{item.item}}</a></td>
+            <td>{{item.start_date}}</td>
+            <td>{{item.release_date}}</td>
+            <td><a href="/addFav/{{item.id}}">Join</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+    <br>
+    <a href="/item/create" style="padding-left: 1400px;">Add Trip</a>
+    <br><br><br>
+    <a href="/logout" style="padding-left: 1400px;"><input type="submit" value="Logout"></a>
+    <!-- {{allItems}} -->
+</body>
+
+</html>
+

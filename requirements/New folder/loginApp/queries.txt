@@ -1,0 +1,13 @@
+Item.objects.create(item = "iPhone 9", added_by = User.objects.get(id=11), release_date = "2015-01-01")
+
+Item.objects.create(item = "Mountain Bike", added_by = User.objects.get(id=12), release_date = "2015-01-26")
+
+Item.objects.create(item = "Tulsa, OK", added_by = User.objects.get(id=13), release_date = "2015-02-02", plan = "Baseball Game")
+
+Item.objects.create(item = "Hiking Bag", added_by = User.objects.get(id=13), release_date = "2015-02-14")
+
+Item.objects.get(id=1).wishlist.add(User.objects.get(id=11))
+
+Item.objects.get(id=2).wishlist.add(User.objects.get(id=12))
+
+Item.objects.get(id=4).wishlist.add(User.objects.get(id=13))
